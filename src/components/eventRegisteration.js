@@ -27,7 +27,7 @@ function EventRegisterationForm() {
     hackerrankProfile: "", leetcodeProfile: "",
     codeforcesProfile: "", codechefProfile: "",
     branch: "", gender: "", hosteller: "",
-    studentNumber: "", rollNumber: "", website: "", otherSkills: "",
+    studentNumber: "", rollNumber: "", website: "", otherThanCp: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ function EventRegisterationForm() {
       tempErrors.phoneNumber = "Enter valid 10-digit mobile number.";
     }
     if (!studentNumber.trim() || !/^24\d{5,6}$/.test(studentNumber)) {
-      tempErrors.studentNumber = "Student No. must start with '25' (1st Year only) and be 7-8 digits.";
+      tempErrors.studentNumber = "Student No. must start with '24'  and be 7-8 digits.";
     }
     if (!/^[a-zA-Z0-9._%+-]+@akgec\.ac\.in$/.test(emailId)) {
       tempErrors.emailId = "Enter a valid email ending with @akgec.ac.in";
@@ -57,7 +57,7 @@ function EventRegisterationForm() {
       tempErrors.emailId = "Email ID doesn't match your Student No.";
     }
     if (!rollNumber.trim() || !/^24\d{11}$/.test(rollNumber)) {
-      tempErrors.rollNumber = "Roll No. must start with '25' (1st Year only) and be 13 digits.";
+      tempErrors.rollNumber = "Roll No. must start with '24'  and be 13 digits.";
     } else if (branch && branchCodes[branch] && !rollNumber.substring(5, 9).includes(branchCodes[branch])) {
       tempErrors.rollNumber = `Roll No. doesn't match selected branch (${branch}).`;
     }
@@ -141,7 +141,7 @@ function EventRegisterationForm() {
       return;
     }
 
-    const { otherSkills, ...apiPayloadData } = formData;
+    const { otherThanCp, ...apiPayloadData } = formData;
     const payload = { ...apiPayloadData, captchaToken };
 
     try {
@@ -155,7 +155,7 @@ function EventRegisterationForm() {
         hackerrankProfile: "", leetcodeProfile: "",
         codeforcesProfile: "", codechefProfile: "",
         branch: "", gender: "", hosteller: "",
-        studentNumber: "", rollNumber: "", website: "", otherSkills: ""
+        studentNumber: "", rollNumber: "", website: "", otherThanCp: ""
       });
 
     } catch (error) {
@@ -351,7 +351,7 @@ function EventRegisterationForm() {
             <label className="label">What do you do other than CP? <span>*</span></label>
             <div className="inputWrapper">
               <FaPencilAlt className="inputIcon" />
-              <select name="otherSkills" value={formData.otherSkills} onChange={handleChange} className={`select ${errors.otherSkills ? "input-error" : ""}`} required>
+              <select name="otherThanCp" value={formData.otherThanCp} onChange={handleChange} className={`select ${errors.otherThanCp ? "input-error" : ""}`} required>
                 <option value="">Select an option</option>
                 <option value="Designing">Designing</option>
                 <option value="Video Editing">Video Editing</option>
@@ -362,7 +362,7 @@ function EventRegisterationForm() {
                 <option value="I am a beginner">I am a beginner</option>
               </select>
             </div>
-            {errors.otherSkills && <span className="error-msg">{errors.otherSkills}</span>}
+            {errors.otherThanCp && <span className="error-msg">{errors.otherThanCp}</span>}
           </div>
         </div>
 
