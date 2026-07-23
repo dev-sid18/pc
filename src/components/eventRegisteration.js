@@ -141,8 +141,7 @@ function EventRegisterationForm() {
       return;
     }
 
-    const { otherThanCp, ...apiPayloadData } = formData;
-    const payload = { ...apiPayloadData, captchaToken };
+    const payload = { ...formData, captchaToken };
 
     try {
       await axios.post(BACKEND_URL, payload, { headers: { 'Content-Type': 'application/json' } });
