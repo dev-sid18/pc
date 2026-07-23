@@ -48,7 +48,7 @@ function EventRegisterationForm() {
     if (!/^[6-9]\d{9}$/.test(phoneNumber)) {
       tempErrors.phoneNumber = "Enter valid 10-digit mobile number.";
     }
-    if (!studentNumber.trim() || !/^25\d{5,6}$/.test(studentNumber)) {
+    if (!studentNumber.trim() || !/^24\d{5,6}$/.test(studentNumber)) {
       tempErrors.studentNumber = "Student No. must start with '25' (1st Year only) and be 7-8 digits.";
     }
     if (!/^[a-zA-Z0-9._%+-]+@akgec\.ac\.in$/.test(emailId)) {
@@ -56,7 +56,7 @@ function EventRegisterationForm() {
     } else if (studentNumber && !emailId.replace("@akgec.ac.in", "").endsWith(studentNumber)) {
       tempErrors.emailId = "Email ID doesn't match your Student No.";
     }
-    if (!rollNumber.trim() || !/^25\d{11}$/.test(rollNumber)) {
+    if (!rollNumber.trim() || !/^24\d{11}$/.test(rollNumber)) {
       tempErrors.rollNumber = "Roll No. must start with '25' (1st Year only) and be 13 digits.";
     } else if (branch && branchCodes[branch] && !rollNumber.substring(5, 9).includes(branchCodes[branch])) {
       tempErrors.rollNumber = `Roll No. doesn't match selected branch (${branch}).`;
